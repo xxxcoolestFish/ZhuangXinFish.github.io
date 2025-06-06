@@ -73,7 +73,7 @@
      
     <div class="article-meta">
       <a href="/2025/05/21/2028%E5%B9%B4%E5%A5%A5%E6%9E%97%E5%8C%B9%E5%85%8B%E7%AB%9E%E8%B5%9B%E9%A2%84%E6%B5%8B/" class="article-date">
-  <time datetime="2025-05-21T06:33:25.000Z" itemprop="datePublished">2025-05-21</time>
+  <time datetime="2025-05-21T06:49:18.000Z" itemprop="datePublished">2025-05-21</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/%E8%AE%BA%E6%96%87/">论文</a> / <a class="article-category-link" href="/categories/%E8%AE%BA%E6%96%87/%E7%AB%9E%E8%B5%9B/">竞赛</a>
@@ -84,7 +84,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">8.2k</span>
+            <span class="post-count">1.7k</span>
         </span>
     </span>
 
@@ -93,7 +93,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">30 min</span>
+            <span class="post-count">6 min</span>
         </span>
     </span>
 </div>
@@ -108,12 +108,14 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <p>以下是论文 <strong>“Anticipating the 2028 Olympics through mathematical modeling”</strong> 的 Markdown 转换版本。由于内容较多，先给出前几节（第 1 章到第 3 章）的 Markdown。如需后续章节，请告知。</p>
-<hr>
-<h2 id="1-引言"><a href="#1-引言" class="headerlink" title="1 引言"></a>1 引言</h2><h3 id="1-1-背景"><a href="#1-1-背景" class="headerlink" title="1.1 背景"></a>1.1 背景</h3><p>奥林匹克运动会是全球最顶级的体育盛会，奖牌榜备受关注。在 2024 年巴黎奥运会上，美国夺得了总奖牌数最多，而中国与美国并列金牌第一。各国在奖牌榜上的排名，映射了它们在不同项目上的竞技实力差异。有些国家实现了“零突破”但仍有 60 多个国家未曾获得过奥运奖牌，这凸显了全球体育发展的不平衡。</p>
-<p>数学建模在体育领域被广泛应用。尽管已有研究取得一定成果，但在综合考虑项目设置变化及“伟大教练效应”对奖牌数影响方面尚有缺口。基于此，利用给定的大量历史奥运数据，构建更精细的数学模型来研究奥运奖牌榜具有重要意义。</p>
+  <p>这是对2025年数学建模美赛的获奖论文的总结呈现。这篇论文是在 4 天内完成的。</p>
+
+
+<p>本文通过对历届奥运奖牌数据的整理与特征工程，构建了两个子模型——基于 ARIMA 的时序预测模型和基于网格搜索＋随机森林的条件回归模型，并针对“主场效应”与“加权参赛概率”作了校正与修正，最后通过线性加权融合得到各国在 2028 年奥运会上金银铜牌数量的综合预测；同时，论文利用马尔可夫链和 DID 方法发现并量化了“伟大教练效应”，通过回归分析和兼容度指标筛选出最适合引入顶级教练的国家与项目；最后对模型中 ARIMA 参数与随机森林特征的重要性进行了敏感性分析，从而揭示了时序模型、机器学习、马尔可夫过程、差分中的差分、回归分析等多种数学与统计学方法在奥运奖牌预测与洞察中的应用。</p>
 <span id="more"></span>
 
+<h2 id="1-引言"><a href="#1-引言" class="headerlink" title="1 引言"></a>1 引言</h2><h3 id="1-1-背景"><a href="#1-1-背景" class="headerlink" title="1.1 背景"></a>1.1 背景</h3><p>奥林匹克运动会是全球最顶级的体育盛会，奖牌榜备受关注。在 2024 年巴黎奥运会上，美国夺得了总奖牌数最多，而中国与美国并列金牌第一。各国在奖牌榜上的排名，映射了它们在不同项目上的竞技实力差异。有些国家实现了“零突破”但仍有 60 多个国家未曾获得过奥运奖牌，这凸显了全球体育发展的不平衡。</p>
+<p>数学建模在体育领域被广泛应用。尽管已有研究取得一定成果，但在综合考虑项目设置变化及“伟大教练效应”对奖牌数影响方面尚有缺口。基于此，利用给定的大量历史奥运数据，构建更精细的数学模型来研究奥运奖牌榜具有重要意义。</p>
 <h3 id="1-2-问题重述"><a href="#1-2-问题重述" class="headerlink" title="1.2 问题重述"></a>1.2 问题重述</h3><ul>
 <li><p><strong>问题 1</strong><br>构建模型预测 2028 年奥运会上各国奖牌归属，区分出哪些国家有所提升、退步或“零突破”；同时，探索各国在各项目上对奖牌的依赖程度。</p>
 </li>
@@ -187,459 +189,9 @@
 <li>数据中部分国家名称存在多种不同表达，难以准确匹配。使用 Python 的 FuzzyWuzzy 库，对比 <code>summerOly hosts.csv</code> 中的标准名称，对 <code>summerOly medal counts.csv</code> 进行模糊匹配与校正，实现同一国家名称的对齐。</li>
 </ul>
 <hr>
-<p>以下是接下来的第 4 章和第 5 章的 Markdown 内容翻译与排版。如需第 6 章及以后部分，请继续告知。</p>
-<hr>
-<h2 id="4-模型-1：基于时序的-ARIMA-预测模型"><a href="#4-模型-1：基于时序的-ARIMA-预测模型" class="headerlink" title="4 模型 1：基于时序的 ARIMA 预测模型"></a>4 模型 1：基于时序的 ARIMA 预测模型</h2><h3 id="4-1-ARIMA-预测模型"><a href="#4-1-ARIMA-预测模型" class="headerlink" title="4.1 ARIMA 预测模型"></a>4.1 ARIMA 预测模型</h3><p>ARIMA（Autoregressive Integrated Moving Average，自回归综合滑动平均模型）在时序分析中被广泛应用，用于对未来数据进行有效预测。设时间序列为 ${y_t}_{t&#x3D;1}^T$。ARIMA($p,d,q$) 模型可表示为：</p>
-<p>$$<br>y_t &#x3D; \sum_{i&#x3D;1}^{p}\phi_i,y_{t-i} + \epsilon_t + \sum_{j&#x3D;1}^{q}\theta_j,\epsilon_{t-j},<br>$$</p>
-<p>其中：</p>
-<ul>
-<li>$p$：自回归阶数（AR 部分），表示当前值与过去 $p$ 个值的线性关系；</li>
-<li>$d$：差分阶数（I 部分），用于消除序列非平稳性；</li>
-<li>$q$：滑动平均阶数（MA 部分），表示当前误差与过去 $q$ 个白噪声误差的线性组合；</li>
-<li>$\phi_i$：自回归系数；</li>
-<li>$\theta_j$：滑动平均系数；</li>
-<li>$\epsilon_t$：白噪声误差项，满足 $\mathbb{E}[\epsilon_t]&#x3D;0$ 且 $\mathrm{Var}(\epsilon_t)&#x3D;\sigma^2$。</li>
-</ul>
-<p><strong>参数选择与检验步骤</strong></p>
-<ol>
-<li><strong>平稳性检验</strong>：对各国历届奥运奖牌时间序列（包括金、银、铜牌数）进行单位根检验（如 ADF 检验）判断序列是否平稳。若不平稳则采用差分处理。</li>
-<li><strong>阶数确定</strong>：通过自相关函数（ACF）和偏自相关函数（PACF）图，以及信息准则（AIC&#x2F;BIC），选定合适的 $(p,d,q)$ 组合。</li>
-<li><strong>模型训练</strong>：使用 <code>statsmodels.tsa.arima.model.ARIMA</code> 对每个国家&#x2F;地区的金牌、银牌、铜牌序列分别拟合最优 $(p,d,q)$。</li>
-<li><strong>诊断检验</strong>：检验残差的白噪声性（Ljung–Box 检验），确保模型残差不含显著自相关。</li>
-<li><strong>MSE 评估</strong>：将训练好的模型用于预测最近一年（例如 2024 年）的数据，与真实值计算均方误差（MSE），并记录各国 MSE 以评估模型拟合效果。</li>
-</ol>
-<h3 id="4-2-模型实现细节"><a href="#4-2-模型实现细节" class="headerlink" title="4.2 模型实现细节"></a>4.2 模型实现细节</h3><h4 id="4-2-1-参数选择与模型拟合"><a href="#4-2-1-参数选择与模型拟合" class="headerlink" title="4.2.1 参数选择与模型拟合"></a>4.2.1 参数选择与模型拟合</h4><ul>
-<li>对每个国家的金、银、铜牌历史数据分别进行 ADF 单位根检验，发现多数学序列在差分一次后可以近似平稳。</li>
-<li>通过遍历 $(p,d,q)$ 网格（如 $p&#x3D;0$–$3$，$d&#x3D;0$–$1$，$q&#x3D;0$–$3$），使用 AIC&#x2F;BIC 指标选定最优组合。</li>
-<li>在模型训练过程中，尤其注意主办国所在年份的数据偏差——因为主场效应（Host Country Effect）可能导致预测值与真实值出现显著偏差。因此，对于曾举办奥运会的年份，在拟合时会采用“数据替换”策略（即用相邻年份的平滑值替换主办年份的极端值）来降低 MSE。</li>
-</ul>
-<h4 id="4-2-2-主场效应（Host-Country-Effect）"><a href="#4-2-2-主场效应（Host-Country-Effect）" class="headerlink" title="4.2.2 主场效应（Host Country Effect）"></a>4.2.2 主场效应（Host Country Effect）</h4><p>“主场效应”指当国家主办奥运会时，其奖牌总数往往会大幅提升，从而导致与纯粹时序模型的预测存在偏差。</p>
-<ul>
-<li><strong>识别</strong>：观察某国在主办年份的预测值和真实值之间的巨大差距（MSE 突增）。</li>
-<li><strong>校正</strong>：在模型训练时，将主办年份的数据替换为前后两届奥运会该国奖牌数的加权平均值，以弱化主场效应的极端影响。</li>
-<li><strong>效果</strong>：如图 3 所示（MSE 在校正前后对比）。</li>
-</ul>
 <blockquote>
-<p><strong>图 3：在主场效应影响下的 MSE 对比</strong></p>
+<p><strong>提示：</strong> 若需要后续章节（第 4 章及以后）的 Markdown，请随时告知！</p>
 </blockquote>
-<h4 id="4-2-3-模型评估与结果示例"><a href="#4-2-3-模型评估与结果示例" class="headerlink" title="4.2.3 模型评估与结果示例"></a>4.2.3 模型评估与结果示例</h4><ul>
-<li>以美国、法国、中国等代表性国家为例，在校正前后计算 2016、2020、2024 三届奥运会金、银、铜牌 MSE。</li>
-<li>校正后，各国 MSE 显著下降，特别是主办国（如 2024 年为法国）受益明显。</li>
-<li>最终，将经过主场效应校正的 ARIMA 模型用于预测 2028 年各国金、银、铜牌数，记为 $\text{Pred}_\text{ARIMA}$。</li>
-</ul>
-<hr>
-<h2 id="5-模型-2：基于条件的随机森林预测模型"><a href="#5-模型-2：基于条件的随机森林预测模型" class="headerlink" title="5 模型 2：基于条件的随机森林预测模型"></a>5 模型 2：基于条件的随机森林预测模型</h2><h3 id="5-1-网格搜索与随机森林预测模型"><a href="#5-1-网格搜索与随机森林预测模型" class="headerlink" title="5.1 网格搜索与随机森林预测模型"></a>5.1 网格搜索与随机森林预测模型</h3><p>本模型旨在结合“团队特征 + 比赛条件”来预测每个参赛团队在单届奥运会中的金、银、铜牌数量。</p>
-<h4 id="5-1-1-网格搜索（Grid-Search）"><a href="#5-1-1-网格搜索（Grid-Search）" class="headerlink" title="5.1.1 网格搜索（Grid Search）"></a>5.1.1 网格搜索（Grid Search）</h4><ul>
-<li><p><strong>目的</strong>：在随机森林（Random Forest）等机器学习模型中，寻找最优超参数组合。</p>
-</li>
-<li><p><strong>定义</strong>：设模型 $M$ 的超参数集合为 $\Theta &#x3D; {\theta_1, \theta_2, \dots, \theta_k}$，每个 $\theta_i$ 有候选值集合 $S_i$。超参数空间 $H$ 为笛卡尔积：</p>
-<p>$$<br>H &#x3D; S_1 \times S_2 \times \cdots \times S_k.<br>$$</p>
-</li>
-<li><p><strong>流程</strong>：</p>
-<ol>
-<li>对每个 $\theta_i \in S_i$ 的所有组合 $\boldsymbol\theta$ 构建模型 $M(\boldsymbol\theta)$。</li>
-<li>在训练集 $\mathcal{D}<em>\text{train}$ 上训练 $M(\boldsymbol\theta)$，并在验证集 $\mathcal{D}</em>\text{val}$ 上计算损失 $L\bigl(M(\boldsymbol\theta),\mathcal{D}_\text{val}\bigr)$。</li>
-<li>选择使验证损失最小的 $\boldsymbol\theta_\text{opt}$ 作为最优超参数。</li>
-</ol>
-</li>
-</ul>
-<h4 id="5-1-2-随机森林预测模型（Random-Forest）"><a href="#5-1-2-随机森林预测模型（Random-Forest）" class="headerlink" title="5.1.2 随机森林预测模型（Random Forest）"></a>5.1.2 随机森林预测模型（Random Forest）</h4><ul>
-<li><p><strong>概念</strong>：随机森林是一种基于决策树的集成学习方法，通过<strong>Bootstrap 采样</strong>和<strong>随机特征选择</strong>来构建多棵决策树，并取其预测结果的平均值（回归）或投票结果（分类）。</p>
-</li>
-<li><p><strong>决策树构建</strong>：</p>
-<ol>
-<li><p><strong>Bootstrap 采样</strong>：从原始训练集 $D &#x3D; {(x_t, y_t)}_{t&#x3D;1}^T$ 中有放回地抽取 $N$ 个样本，得到子集 $D_i$，用于训练第 $i$ 棵树 $T_i$。</p>
-</li>
-<li><p><strong>特征子集选择</strong>：在训练每个节点时，从全部特征集合 $F$ 中随机选择一个子集 $F_i$（大小为 $\sqrt{|F|}$ 或其他预设值），仅在 $F_i$ 上寻找最优划分。</p>
-</li>
-<li><p><strong>树生长</strong>：递归地按照最小化均方误差（MSE）的准则划分节点，直至满足停止条件（如叶节点最小样本数、最大深度）。</p>
-</li>
-<li><p><strong>集成预测</strong>：设有 $n$ 棵树 ${T_i}_{i&#x3D;1}^n$，对输入特征 $x$ 的预测值为：</p>
-<p>$$<br>  \hat{y} &#x3D; \frac{1}{n} \sum_{i&#x3D;1}^n T_i(x).<br>$$</p>
-</li>
-</ol>
-</li>
-<li><p><strong>目标</strong>：用随机森林对每个团队（国家 + 项目）的特征向量进行回归，预测其当届奥运会的金&#x2F;银&#x2F;铜牌数。</p>
-</li>
-<li><p><strong>评价指标</strong>：使用均方误差（MSE）衡量预测值与真实值之间的差距，并结合网格搜索确定最优超参数。</p>
-</li>
-</ul>
-<h3 id="5-2-特征工程"><a href="#5-2-特征工程" class="headerlink" title="5.2 特征工程"></a>5.2 特征工程</h3><p>为了让模型能够充分捕捉团队的历史成绩、参加频率、国家整体实力等信息，需要设计一系列特征。</p>
-<ol>
-<li><p><strong>历史参赛频率（Participation Frequency）</strong></p>
-<ul>
-<li>统计该团队在过去 5 届（2008–2024）奥运会上是否参赛，用二元特征表示（参与记为 1，未参与记为 0）。</li>
-<li>通过指数递减或加权方式表达最近参赛的重要性（详见 5.4 节 WPP）。</li>
-</ul>
-</li>
-<li><p><strong>历届奖牌比例（Medal Proportion）</strong></p>
-<ul>
-<li><p>对该团队在过去几届奥运会中取得的金、银、铜牌数进行归一化处理，计算比例特征：</p>
-<p>$$<br>  \text{GP} &#x3D; \frac{\text{历史金牌总数}}{\text{历史奖牌总数}},\quad<br>  \text{SP} &#x3D; \frac{\text{历史银牌总数}}{\text{历史奖牌总数}},\quad<br>  \text{BP} &#x3D; \frac{\text{历史铜牌总数}}{\text{历史奖牌总数}}.<br>$$</p>
-</li>
-<li><p>这些比例反映团队在不同奖牌层次上的竞争力分布。</p>
-</li>
-</ul>
-</li>
-<li><p><strong>主场效应特征（Host Feature）</strong></p>
-<ul>
-<li>若该团队所在国家曾主办该项目所在大洲赛事（如世锦赛、洲际赛），则设置二元特征 1，否则 0。</li>
-<li>主要用于捕捉类似主场优势的潜在影响。</li>
-</ul>
-</li>
-<li><p><strong>国家综合实力（National Strength）</strong></p>
-<ul>
-<li>根据国家总体经济、体育投入等宏观指标（如人均 GDP、体育预算占比、历届奥运总奖牌数等）构建特征，反映该国体育资源投入与支持力度。</li>
-</ul>
-</li>
-<li><p><strong>其他比赛条件（Competition Conditions）</strong></p>
-<ul>
-<li>如赛事举办地气候、时差、队伍参赛人数等信息，也可以酌情纳入特征向量。</li>
-</ul>
-</li>
-</ol>
-<p>最终，将上述特征整合成输入向量 $x_t$，输出为该团队在第 $t$ 届奥运会的金&#x2F;银&#x2F;铜牌数 $y_t$。使用网格搜索确定随机森林超参数后，训练并验证模型得到 $\text{Pred}_\text{RF}$。</p>
-<h3 id="5-3-模型训练与评估"><a href="#5-3-模型训练与评估" class="headerlink" title="5.3 模型训练与评估"></a>5.3 模型训练与评估</h3><ol>
-<li><p><strong>数据集划分</strong></p>
-<ul>
-<li>按照历届奥运会时间顺序，将 2008–2020 年数据作为训练集，2024 年数据作为验证集。</li>
-<li>对每个团队（国家 + 项目）构造对应的特征向量与真实奖牌标签。</li>
-</ul>
-</li>
-<li><p><strong>超参数调优</strong></p>
-<ul>
-<li><p>在验证集上使用网格搜索调参，常见超参数包括：</p>
-<ul>
-<li>决策树数量 $n$（如 100、200、500）</li>
-<li>每棵树最大深度 $d_{\max}$（如 5、10、15）</li>
-<li>最小样本切分数 $\text{min_samples_split}$（如 2、5、10）</li>
-<li>特征子集大小 $\sqrt{|F|}$ 或 $\log_2(|F|)$ 等</li>
-</ul>
-</li>
-<li><p>以 MSE 最小化为目标，选取最优组合 $\boldsymbol\theta_{\text{opt}}$。</p>
-</li>
-</ul>
-</li>
-<li><p><strong>模型评估</strong></p>
-<ul>
-<li>在 2024 年验证集上计算 MSE，总体误差与各国误差分布；</li>
-<li>对比分析误差较大的项目与国家，检查特征工程是否需改进。</li>
-</ul>
-</li>
-</ol>
-<h3 id="5-4-2028-年加权参赛概率（Weighted-Participation-Probability-WPP）"><a href="#5-4-2028-年加权参赛概率（Weighted-Participation-Probability-WPP）" class="headerlink" title="5.4 2028 年加权参赛概率（Weighted Participation Probability, WPP）"></a>5.4 2028 年加权参赛概率（Weighted Participation Probability, WPP）</h3><p>由于部分团队在近年历史参赛较少，如果直接将其传统预测结果用于 2028 年预测，可能出现过高或过低估计。为此，引入 <strong>加权参赛概率（WPP）</strong> 修正预测结果。具体定义为：</p>
-<p>$$<br>\text{WPP} ;&#x3D;; \sum_{i&#x3D;1}^{5} p_i \cdot b_i,<br>$$</p>
-<p>其中：</p>
-<ul>
-<li>$b_i$ 表示该团队是否参加过第 $(2024 - 4(i-1))$ 届（即 2024、2020、2016、2012、2008）奥运会，若参与则 $b_i&#x3D;1$，否则 $b_i&#x3D;0$。</li>
-<li>权重 $p_i$ 设置为 ${0.50,,0.25,,0.125,,0.0625,,0.0625}$，表示距离 2028 年时间越近的重要性越高。</li>
-</ul>
-<p><strong>应用</strong>：</p>
-<ul>
-<li><p>将随机森林模型对某团队的预测结果 $\widehat{y}_\text{RF}$ 乘以其 2028 年 WPP，得到加权后的预测值：</p>
-<p>$$<br>  \text{Pred}<em>\text{RF}^\text{(WPP)} ;&#x3D;; \text{WPP} \times \widehat{y}</em>\text{RF}.<br>$$</p>
-</li>
-<li><p>该修正可降低近期不活跃团队对最终奖牌预测的干扰，提升稳定性。</p>
-</li>
-</ul>
-<h3 id="5-5-模型-1-与模型-2-的加权融合"><a href="#5-5-模型-1-与模型-2-的加权融合" class="headerlink" title="5.5 模型 1 与模型 2 的加权融合"></a>5.5 模型 1 与模型 2 的加权融合</h3><p>为了综合考虑时序趋势与条件特征对奖牌数预测的贡献，采用加权融合方法：</p>
-<p>$$<br>\text{Final} ;&#x3D;; a \times \text{Pred}<em>\text{ARIMA} ;+; b \times \text{Pred}</em>\text{RF}^\text{(WPP)} ;+; c,<br>$$</p>
-<p>其中：</p>
-<ul>
-<li>$\text{Pred}_\text{ARIMA}$：模型 1 对该国&#x2F;团队在 2028 年的奖牌数预测（含主场效应校正）；</li>
-<li>$\text{Pred}_\text{RF}^\text{(WPP)}$：经过加权参赛概率修正后，模型 2 的预测值；</li>
-<li>$a,,b,,c$：融合权重与偏置项，通过让两模型对最近一届奥运（2024）做回测并最小化回归残差来拟合得到。</li>
-</ul>
-<p><strong>融合过程</strong>：</p>
-<ol>
-<li><p>分别使用模型 1 与模型 2（含 WPP 修正）对 2024 年各国&#x2F;团队做奖牌数预测，记为 $\widehat{y}<em>{\text{ARIMA}}^{2024}$、$\widehat{y}</em>{\text{RF}}^{2024}$。</p>
-</li>
-<li><p>令真实奖牌为 $y^{2024}$，设立线性回归：</p>
-<p>$$<br>  y^{2024} ;&#x3D;; a,\widehat{y}<em>{\text{ARIMA}}^{2024} ;+; b,\widehat{y}</em>{\text{RF}}^{2024} ;+; c ;+; \epsilon,<br>$$</p>
-<p>最小化均方误差拟合出 $a$、$b$、$c$。</p>
-</li>
-<li><p>将得到的 $a$、$b$、$c$ 应用于 2028 年预测结果，得到最终融合预测值 $\text{Final}^{2028}$。</p>
-</li>
-</ol>
-<p><strong>示例结果</strong>：</p>
-<table>
-<thead>
-<tr>
-<th align="center">国家&#x2F;地区</th>
-<th align="center">$\widehat{y}_{\text{ARIMA}}^{2024}$</th>
-<th align="center">$\widehat{y}_{\text{RF}}^{2024}$</th>
-<th align="center">真实 $y^{2024}$</th>
-<th align="center">融合后 $\text{Final}^{2024}$</th>
-<th align="center">融合后 MSE</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">美国</td>
-<td align="center">113</td>
-<td align="center">108</td>
-<td align="center">107</td>
-<td align="center">109</td>
-<td align="center">4.0</td>
-</tr>
-<tr>
-<td align="center">中国</td>
-<td align="center">87</td>
-<td align="center">90</td>
-<td align="center">89</td>
-<td align="center">89</td>
-<td align="center">1.0</td>
-</tr>
-<tr>
-<td align="center">法国</td>
-<td align="center">42</td>
-<td align="center">38</td>
-<td align="center">43</td>
-<td align="center">41</td>
-<td align="center">4.0</td>
-</tr>
-<tr>
-<td align="center">…</td>
-<td align="center">…</td>
-<td align="center">…</td>
-<td align="center">…</td>
-<td align="center">…</td>
-<td align="center">…</td>
-</tr>
-</tbody></table>
-<p>通过回测可见，加权融合后融合 MSE 较单一模型更低，提升了预测准确性。</p>
-<hr>
-<p>以下是第 6 章和第 7 章的 Markdown 内容转换，已根据原文结构加入相应小节和公式。所有内容均基于您上传的论文文档。若需微调或查看后续章节，请继续告知。</p>
-<hr>
-<h2 id="6-伟大教练效应（Great-Coach-Effect）"><a href="#6-伟大教练效应（Great-Coach-Effect）" class="headerlink" title="6 伟大教练效应（Great Coach Effect）"></a>6 伟大教练效应（Great Coach Effect）</h2><h3 id="6-1-马尔可夫链预测模型（Markov-Chain-Prediction-Model）"><a href="#6-1-马尔可夫链预测模型（Markov-Chain-Prediction-Model）" class="headerlink" title="6.1 马尔可夫链预测模型（Markov Chain Prediction Model）"></a>6.1 马尔可夫链预测模型（Markov Chain Prediction Model）</h3><p>马尔可夫链模型假设系统未来状态仅依赖于当前状态，与过去历史无关（马尔可夫性质）。设状态集合为</p>
-<p>$$<br>S &#x3D; {s_1, s_2, \dots, s_n}<br>$$</p>
-<p>系统在时刻 $t$ 的状态为 $X_t$，且 $X_t \in S$。从状态 $s_i$ 到 $s_j$ 的一步跃迁概率定义为</p>
-<p>$$<br>P(X_{t+1} &#x3D; s_j \mid X_t &#x3D; s_i) &#x3D; p_{ij},<br>$$</p>
-<p>由此构成 $n \times n$ 的转移概率矩阵 $P &#x3D; (p_{ij})_{n\times n}$，满足</p>
-<p>$$<br>\sum_{j&#x3D;1}^n p_{ij} &#x3D; 1, \quad \forall, i &#x3D; 1,2,\dots,n.<br>$$</p>
-<p>设初始状态概率分布为</p>
-<p>$$<br>\pi^{(0)} &#x3D; \bigl(\pi^{(0)}_1,;\pi^{(0)}_2,;\dots,;\pi^{(0)}_n\bigr),<br>\quad<br>\pi^{(0)}<em>i &#x3D; P(X_0 &#x3D; s_i),;<br>\sum</em>{i&#x3D;1}^n \pi^{(0)}_i &#x3D; 1.<br>$$</p>
-<p>则系统在时刻 $t$ 的状态概率分布为</p>
-<p>$$<br>\pi^{(t)} &#x3D; \pi^{(0)} P^t,<br>$$</p>
-<p>其中 $P^t$ 表示矩阵 $P$ 的 $t$ 次幂。因此，若已知时刻 $k$ 的分布 $\pi^{(k)}$，则时隔 $h$ 步后的分布可预测为</p>
-<p>$$<br>\pi^{(k+h)} ;&#x3D;; \pi^{(k)},P^h.<br>$$</p>
-<p>在实际应用中，需要：</p>
-<ol>
-<li>确定系统的“状态集” $S$，通常根据团队过去的比赛成绩（如“无奖牌”、“铜牌组”、“银牌组”、“金牌组”等）进行离散划分。</li>
-<li>基于历史数据估计一次跃迁概率矩阵 $P$（例如，统计某队在有伟大教练和无伟大教练时期不同状态间的转换频率）。</li>
-<li>通过上述公式预测“无教练”情景下团队未来的奖牌分布，为后续 DID 方法提供对照模型。&#x20;</li>
-</ol>
-<hr>
-<h3 id="6-2-通过-DID-模型寻找伟大教练效应证据（Seeking-Evidence-via-DID-Model）"><a href="#6-2-通过-DID-模型寻找伟大教练效应证据（Seeking-Evidence-via-DID-Model）" class="headerlink" title="6.2 通过 DID 模型寻找伟大教练效应证据（Seeking Evidence via DID Model）"></a>6.2 通过 DID 模型寻找伟大教练效应证据（Seeking Evidence via DID Model）</h3><p>将“优秀教练”视为一种“政策干预”，将团队成绩变化视作政策效应带来的改进。借助差分中的差分（Difference-in-Differences, DID）方法，比较以下两组数据：</p>
-<ul>
-<li><strong>处理组</strong>：在某届奥运会前后由“伟大教练”执教的团队，真实成绩记为 $Y^{\text{真实}}$。</li>
-<li><strong>对照组</strong>：若“没有伟大教练”干预时，根据马尔可夫链模型预测的成绩 $\widehat{Y}^{\text{无教练}}$。</li>
-</ul>
-<p>以奖牌数或“奖牌价值”（下文定义）为因变量，将结果可视化为三维瀑布图。示例图中比较了：</p>
-<ul>
-<li><strong>罗马尼亚与美国体操队（Coach Béla Károlyi）</strong>：团队在不同奥运周期的真实奖牌与 RCA 预测值对比，呈现显著差距，证明了卡罗伊效应的存在。</li>
-<li><strong>中国与美国女子排球队（Coach Lang Ping）</strong>：Lang Ping 执教前后真实成绩与预测成绩对比，发现美国队在执教后成绩显著回升；中国队则执教后一次取得银牌&#x2F;金牌，但后续表现波动较大，未形成长期稳定优势。&#x20;</li>
-</ul>
-<p>通过上述对比，可判定“伟大教练效应”确实存在，并可据此构建定量模型。图示示例如下：</p>
-<ul>
-<li><strong>图 10：Béla Károlyi 教练在罗美体操队前后的成就对比（3D 瀑布图）</strong></li>
-<li><strong>图 11：Lang Ping 教练在中美女子排球队前后的成就对比（3D 瀑布图）</strong></li>
-</ul>
-<blockquote>
-<p><strong>备注</strong>：上述可视化均基于将“真实奖牌数”与“马尔可夫链预测（无教练）”结果进行三维对比，直观反映了教练干预带来的增益。&#x20;</p>
-</blockquote>
-<hr>
-<h3 id="6-3-伟大教练效应的量化（Quantifying-the-Great-Coach-Effect）"><a href="#6-3-伟大教练效应的量化（Quantifying-the-Great-Coach-Effect）" class="headerlink" title="6.3 伟大教练效应的量化（Quantifying the Great Coach Effect）"></a>6.3 伟大教练效应的量化（Quantifying the Great Coach Effect）</h3><p>在证实效应存在之后，需对“教练贡献”进行量化建模。总体思路如下：</p>
-<ol>
-<li><p><strong>抽象团队特征</strong></p>
-<ul>
-<li><p>在“有教练”与“无教练”情景下，分别提取团队的关键特征向量（如：历史成绩、运动员年龄组合、世界排名、赛程适应性等）。</p>
-</li>
-<li><p>以“团队特征变化” $\Delta X$ 与“成绩增幅” $\Delta Y &#x3D; Y^{\text{真实}} - \widehat{Y}^{\text{无教练}}$ 进行回归拟合，得到教练贡献函数：</p>
-<p>$$<br>  \Delta Y ;&#x3D;; f(\Delta X)\approx \beta_0 + \beta_1,\Delta X_1 + \cdots + \beta_m,\Delta X_m.<br>$$</p>
-</li>
-</ul>
-</li>
-<li><p><strong>拟合回归模型</strong></p>
-<ul>
-<li>选取若干典型“伟大教练-团队”样本（例如：卡罗伊对罗美体操队、Lang Ping 对中美排球队），对比教练到任前后多届奥运成就，进行线性回归或非线性回归。</li>
-</ul>
-</li>
-<li><p><strong>定义“兼容度”指标</strong></p>
-<ul>
-<li>针对任意团队 $T$，基于其原始特征 $X_T$，计算与“理想教练-团队特征”范式 $\overline{X}$ 的相似度（如余弦相似度、欧氏距离等），记为 “兼容度” $\gamma(T)$。</li>
-<li>团队兼容度越高，意味着“教练效应”潜在增益 $\Delta Y$ 越大。</li>
-</ul>
-</li>
-</ol>
-<p>最终根据 $\gamma(T)$ 值，可筛选最适合“引进伟大教练”的国家与项目团队。&#x20;</p>
-<hr>
-<h3 id="6-4-最适合引入伟大教练的国家筛选（Identifying-Countries-Best-Suited）"><a href="#6-4-最适合引入伟大教练的国家筛选（Identifying-Countries-Best-Suited）" class="headerlink" title="6.4 最适合引入伟大教练的国家筛选（Identifying Countries Best Suited）"></a>6.4 最适合引入伟大教练的国家筛选（Identifying Countries Best Suited）</h3><p>通过上述量化模型和兼容度指标，选出若干“团队潜力”最高、但近年成绩下滑或停滞的国家及项目。例如：</p>
-<ul>
-<li><strong>韩国手球队</strong></li>
-<li><strong>加拿大铁人三项队</strong></li>
-<li><strong>斯洛文尼亚田径队</strong></li>
-</ul>
-<p>这三个团队在历史上均有过奖牌或接近奖牌成绩，但近届奥运成绩未能持续。基于兼容度模型，若为其“引进伟大教练”，可预测的“团队提升百分比”分别为：</p>
-<ul>
-<li>韩国手球队： 83.22 %</li>
-<li>加拿大铁人三项队： 79.73 %</li>
-<li>斯洛文尼亚田径队： 71.22 %</li>
-</ul>
-<p>再结合 <strong>2028 年原始预测奖牌数</strong>，可估算这些国家“引进教练后”的成绩提升概率。以“金牌夺取概率提升”为例：</p>
-<table>
-<thead>
-<tr>
-<th align="center">国家</th>
-<th align="center">原始 2028 年金牌数</th>
-<th align="center">团队兼容度估算（“实力”）</th>
-<th align="center">教练效应后金牌夺取概率提升</th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">韩国（手球）</td>
-<td align="center">32</td>
-<td align="center">高（兼容度 &gt; 0.8）</td>
-<td align="center">120 %</td>
-<td></td>
-</tr>
-<tr>
-<td align="center">加拿大（三项）</td>
-<td align="center">27</td>
-<td align="center">高（兼容度 &gt; 0.75）</td>
-<td align="center">131 %</td>
-<td></td>
-</tr>
-<tr>
-<td align="center">斯洛文尼亚（田径）</td>
-<td align="center">3</td>
-<td align="center">中（兼容度 ≈ 0.7）</td>
-<td align="center">156 %</td>
-<td></td>
-</tr>
-</tbody></table>
-<p>基于此，论文建议各国重点在“潜力事件”上投入“世界级教练”，以最快速实现突破，尤其在高技术含量项目中，教练价值更为显著。</p>
-<hr>
-<h2 id="7-奥运奖牌分布洞见（Insights-into-Olympic-Medal-Counts）"><a href="#7-奥运奖牌分布洞见（Insights-into-Olympic-Medal-Counts）" class="headerlink" title="7 奥运奖牌分布洞见（Insights into Olympic Medal Counts）"></a>7 奥运奖牌分布洞见（Insights into Olympic Medal Counts）</h2><p>在前文建立并回测预测模型的过程中，发现若干“意外因素”对最终奖牌分布产生显著影响。下文分为两大部分：第一，**主场效应（Host Country Effect）**的普遍性与差异；第二，<strong>伟大教练效应的持久性</strong>。</p>
-<hr>
-<h3 id="7-1-主场效应的普遍表现（The-Universal-Manifestation-of-the-Host-Country-Effect）"><a href="#7-1-主场效应的普遍表现（The-Universal-Manifestation-of-the-Host-Country-Effect）" class="headerlink" title="7.1 主场效应的普遍表现（The Universal Manifestation of the Host Country Effect）"></a>7.1 主场效应的普遍表现（The Universal Manifestation of the Host Country Effect）</h3><h4 id="7-1-1-主场效应定义与表现形式（Definition-and-Manifestation）"><a href="#7-1-1-主场效应定义与表现形式（Definition-and-Manifestation）" class="headerlink" title="7.1.1 主场效应定义与表现形式（Definition and Manifestation）"></a>7.1.1 主场效应定义与表现形式（Definition and Manifestation）</h4><p>主场效应是指当一个国家主办奥运会时，其奖牌数往往显著超出时序预测值。主要归因于以下因素：</p>
-<ol>
-<li><strong>主场优势</strong>：运动员在熟悉环境下比赛，心理与生理状态更佳。</li>
-<li><strong>资源投入</strong>：主办国通常会在赛前大幅增加体育经费、完善训练设施、提供科研支持等。</li>
-<li><strong>政策扶持</strong>：政府会出台激励政策，如提高运动员补贴、优化选拔机制等。</li>
-</ol>
-<p>论文通过在第 1 问的“非主办”预测模型中，将某国非主办年份成绩与真实主办年份成绩对比，验证主场效应存在。案例包括：</p>
-<ul>
-<li><strong>斯德哥尔摩 1912 年奥运（瑞典）</strong>：实际奖牌数远超预测。</li>
-<li><strong>安特卫普 1920 年奥运（比利时）</strong>：主办国成绩大幅增长。</li>
-<li><strong>北京 2008 年奥运（中国）</strong>：以 51 枚金牌领跑金牌榜，远超历史平均水平。&#x20;</li>
-</ul>
-<p>对应可视化示例：</p>
-<blockquote>
-<p><strong>图 14：瑞典 1912、比利时 1920、和中国 2008 年奥运主场效应对比。</strong>&#x20;</p>
-</blockquote>
-<hr>
-<h4 id="7-1-2-异常案例分析（Analysis-of-Exceptional-Cases）"><a href="#7-1-2-异常案例分析（Analysis-of-Exceptional-Cases）" class="headerlink" title="7.1.2 异常案例分析（Analysis of Exceptional Cases）"></a>7.1.2 异常案例分析（Analysis of Exceptional Cases）</h4><p>尽管多数主办国存在明显增益，但也有特殊例外需要剖析：</p>
-<ol>
-<li><p><strong>奖牌数异常激增</strong></p>
-<ul>
-<li><strong>法国 1900 年巴黎奥运</strong>、<strong>希腊 1896 年雅典奥运</strong>：奖牌数分别达到 101 和 46 枚，远超平均水平。此时参赛国数量少、竞技水平差距大，赛事规则尚未完善，已无太多现实借鉴意义。</li>
-</ul>
-<blockquote>
-<p><strong>图 15：法国 1900 年奥运奖牌异常激增示例。</strong>&#x20;</p>
-</blockquote>
-</li>
-<li><p><strong>奖牌数变化不显著</strong></p>
-<ul>
-<li><strong>美国 1936 年柏林奥运</strong> 和 <strong>1996 年亚特兰大奥运</strong>：奖牌数几乎与预测吻合，难以再突破。</li>
-<li><strong>墨西哥 1968 年墨西哥城奥运</strong>：同样未见深刻增益。原因或在于国家体育实力已接近瓶颈，即使主办也难进一步大幅提升成绩。</li>
-</ul>
-<blockquote>
-<p><strong>图 16：美国 1936–1996 年奥运奖牌数与预测对比，主场效应不显著。</strong>&#x20;</p>
-</blockquote>
-</li>
-<li><p><strong>重大事件抵消主场优势</strong></p>
-<ul>
-<li><strong>2020 年东京奥运（实际于 2021 年举办）</strong>：由于新冠疫情冲击，日本并未出现显著“主场峰值”。可以理解为疫情对主办国增益的抑制。</li>
-</ul>
-<blockquote>
-<p><strong>图 17：日本 2020 年奥运奖牌数与预测对比，COVID-19 冲击导致增益异常。</strong>&#x20;</p>
-</blockquote>
-</li>
-<li><p><strong>历史特殊情境</strong></p>
-<ul>
-<li><strong>日本 1940 年东京奥运</strong>：因二战取消，导致数据缺失，需要单独剔除或特殊处理，否则会误判主场效应。&#x20;</li>
-</ul>
-</li>
-</ol>
-<hr>
-<h4 id="7-1-3-主场效应影响与未来建议（Impact-and-Recommendations）"><a href="#7-1-3-主场效应影响与未来建议（Impact-and-Recommendations）" class="headerlink" title="7.1.3 主场效应影响与未来建议（Impact and Recommendations）"></a>7.1.3 主场效应影响与未来建议（Impact and Recommendations）</h4><p>深入分析主场效应，有助于理解奥运奖牌分布规律，同时为未来奥运申办提供参考。建议：</p>
-<ul>
-<li><strong>抗风险能力</strong>：遴选具备较强风险抵御能力的国家，能有效缓冲如疫情、战争等突发事件。</li>
-<li><strong>体育发展潜力</strong>：优先考察奖牌数未达到潜力、体育产业有较大提升空间的国家，以推动奥运精神与体育事业更广泛传播。&#x20;</li>
-</ul>
-<p>若主办国家具备上述两个条件，主场效应带来的增益更可持续，有助于激发更多人参与运动，弘扬“更快、更高、更强”理念。</p>
-<hr>
-<h3 id="7-2-伟大教练效应的持久性（The-Durability-of-the-Great-Coach-Effect）"><a href="#7-2-伟大教练效应的持久性（The-Durability-of-the-Great-Coach-Effect）" class="headerlink" title="7.2 伟大教练效应的持久性（The Durability of the Great Coach Effect）"></a>7.2 伟大教练效应的持久性（The Durability of the Great Coach Effect）</h3><h4 id="7-2-1-定义与典型案例分析（Definition-and-Typical-Cases）"><a href="#7-2-1-定义与典型案例分析（Definition-and-Typical-Cases）" class="headerlink" title="7.2.1 定义与典型案例分析（Definition and Typical Cases）"></a>7.2.1 定义与典型案例分析（Definition and Typical Cases）</h4><p>伟大教练效应指知名教练凭借其丰富经验和高水平专业能力，显著影响团队成绩。以极具代表性的两位教练为例：</p>
-<ul>
-<li><p><strong>Béla Károlyi（体操）</strong></p>
-<ul>
-<li>在其执教下，<strong>罗马尼亚体操队</strong>从默默无闻跃升为奥运强队，并在多届奥运实现突破。</li>
-<li>转而执教<strong>美国体操队</strong>后，同样带来显著金牌增长，使两国体操队在国际赛场均达到巅峰。此效应表现出长期、持续的增益。</li>
-</ul>
-</li>
-<li><p><strong>Lang Ping（排球）</strong></p>
-<ul>
-<li>第一次执教<strong>中国女子排球队</strong>时夺得 1996 年亚特兰大银牌；第二次执教 2016 年里约金牌，但此后两届奥运成绩波动，并未保持长期优势。</li>
-<li>执教<strong>美国女子排球队</strong>时，则帮助其时隔 16 年重回领奖台（获得 2020 年东京银牌），说明教练对美国队的影响较为持久。&#x20;</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h4 id="7-2-2-影响因素分析（Analysis-of-Influencing-Factors）"><a href="#7-2-2-影响因素分析（Analysis-of-Influencing-Factors）" class="headerlink" title="7.2.2 影响因素分析（Analysis of Influencing Factors）"></a>7.2.2 影响因素分析（Analysis of Influencing Factors）</h4><p>为探究为何相同教练在不同团队呈现不同持久性，论文从多个角度进行了分析：</p>
-<ol>
-<li><p><strong>团队人员变动</strong></p>
-<ul>
-<li>假设：中国女排人员变动较大会导致成绩波动。但对比分析后发现，中美两队“老将带新人”比例都较稳定（约 50 %），并非主要原因。</li>
-</ul>
-</li>
-<li><p><strong>团队潜力（Team Potential）</strong></p>
-<ul>
-<li>团队的竞技基础决定教练效应的施展范围与深度。历史上多次获得奖牌的团队，潜力值更高，更容易实现教练效应的长期累积。</li>
-<li>中国女排在 Lang Ping 离任后，虽然短期内夺得金牌，但后续新人代际更替未能保持整体竞争力，导致“短暂效应”随之消退。</li>
-<li>相比之下，卡罗伊执教的罗美与美体操队，在教练到来后保持了多届稳定高水平输出，因其团队潜力更强，竞争基础更雄厚。&#x20;</li>
-</ul>
-</li>
-</ol>
-<p>进一步，论文针对教练执教期间的**“颈期”（setback period）**进行量化：</p>
-<ul>
-<li><strong>颈期定义</strong>：教练到任后至团队首次取得显著奖牌成果之间的时间长度。颈期越短，教练效应越快显现；但若团队继续保持高强度投入，则可形成更为持久的增益。</li>
-<li>响应性较强的团队往往具备较好的人才梯队与科学训练系统，在教练离任后也能维持一定水平。</li>
-</ul>
-<p>最终提出：在评价“伟大教练效应持久性”时，应综合考量<strong>团队潜力</strong>、<strong>人员更新速度</strong>、<strong>教练到任时机</strong>等因素，以便更准确预测未来表现。</p>
-<hr>
-<h2 id="8-敏感性分析"><a href="#8-敏感性分析" class="headerlink" title="8 敏感性分析"></a>8 敏感性分析</h2><p>在所构建的预测模型中，敏感性分析用于评估输入变量的微小变化对输出结果的影响，以深入理解模型的稳定性和可靠性，为模型优化和决策提供依据。下面分别对两个子模型进行敏感性分析。</p>
-<hr>
-<h3 id="8-1-基于时序预测模型（ARIMA）的敏感性分析"><a href="#8-1-基于时序预测模型（ARIMA）的敏感性分析" class="headerlink" title="8.1 基于时序预测模型（ARIMA）的敏感性分析"></a>8.1 基于时序预测模型（ARIMA）的敏感性分析</h3><p>在 ARIMA 模型中，自回归阶数 $p$、差分阶数 $d$ 和滑动平均阶数 $q$ 是关键参数。以预测某国在 2028 年奥运会获得金牌数为例，记预测值为 $\hat{Y}$，模型参数为 $\boldsymbol\theta &#x3D; (p,,d,,q)$。定义敏感性指标 $S_{\boldsymbol\theta}$ 为：</p>
-<p>$$<br>S_{\boldsymbol\theta} ;&#x3D;; \frac{\bigl|\hat{Y}(\boldsymbol\theta + \Delta \boldsymbol\theta) ;-; \hat{Y}(\boldsymbol\theta)\bigr|}{\lvert \Delta \boldsymbol\theta \rvert},<br>$$</p>
-<p>其中 $\Delta \boldsymbol\theta$ 表示对参数的微小扰动（例如将 $p$ 增加 1），$\hat{Y}(,p+1,,d,,q)$ 表示在 $p$ 变化后重新计算得到的预测值 。</p>
-<p>通过对不同国家金牌数预测的计算，可得：</p>
-<ul>
-<li>当 $p$ 增加 1 时，敏感性 $S_{p}$ 平均约为 <strong>0.05</strong></li>
-<li>当 $d$ 变化时，敏感性 $S_{d}$ 平均约为 <strong>0.12</strong></li>
-<li>当 $q$ 变化时，敏感性 $S_{q}$ 平均约为 <strong>0.08</strong></li>
-</ul>
-<p>由此可见，差分阶数 $d$ 对模型的预测结果影响最大，需要在构建过程中格外谨慎地进行平稳化处理；$q$ 的影响居中；而 $p$ 的影响相对较小 。</p>
-<hr>
-<h3 id="8-2-基于条件的预测模型（Grid-Search-随机森林）的敏感性分析"><a href="#8-2-基于条件的预测模型（Grid-Search-随机森林）的敏感性分析" class="headerlink" title="8.2 基于条件的预测模型（Grid Search + 随机森林）的敏感性分析"></a>8.2 基于条件的预测模型（Grid Search + 随机森林）的敏感性分析</h3><p>在条件模型中，常见的输入特征包括：团队规模（TS）、平均参赛经验（ACE）、历史金牌比例（GP）等。记某国家队在特定项目的预测奖牌数为 $M$，其对应特征向量为 $\mathbf{x} &#x3D; (,\text{TS},,\text{ACE},,\text{GP},,\dots)$。对某特征 $x_i$ 的敏感性定义为：</p>
-<p>$$<br>S_{x_i} ;&#x3D;; \frac{\bigl|,M\bigl(\mathbf{x} + \Delta x_i\bigr) ;-; M(\mathbf{x})\bigr|}{\lvert \Delta x_i \rvert},<br>$$</p>
-<p>其中 $\Delta x_i$ 表示对该特征的微小扰动 。</p>
-<p>基于对多个国家及项目的分析，得出各特征平均敏感性值：</p>
-<ul>
-<li><strong>团队规模（TS）</strong>：$S_{\rm TS}\approx 0.20$，说明团队规模变化对奖牌数预测影响最大。</li>
-<li><strong>历史金牌比例（GP）</strong>：$S_{\rm GP}\approx 0.15$，为次要影响因素。</li>
-</ul>
-<p>由此可见，在条件模型中，团队规模与历史金牌比例是最需要重点关注和精确获取的特征 。</p>
  
       <!-- reward -->
       
@@ -715,7 +267,7 @@
 </div>
 
 <div id="share-mask"></div>  
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ARIMA/" rel="tag">ARIMA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LSTM/" rel="tag">LSTM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E9%93%BE/" rel="tag">马尔可夫链</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ARIMA/" rel="tag">ARIMA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DID/" rel="tag">DID</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9A%8F%E6%9C%BA%E6%B7%B1%E6%9E%97/" rel="tag">随机深林</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E9%93%BE/" rel="tag">马尔可夫链</a></li></ul>
 
     </footer>
   </div>
