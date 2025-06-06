@@ -72,9 +72,13 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2025/06/06/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%EF%BC%9A%E5%9F%BA%E4%BA%8E%E6%97%B6%E9%97%B4%E8%B6%8B%E5%8A%BF%E9%A2%84%E6%B5%8B%E7%9A%84%E5%81%87%E6%96%B0%E9%97%BB%E6%A3%80%E6%B5%8B%E6%B3%9B%E5%8C%96%E6%A1%86%E6%9E%B6/" class="article-date">
-  <time datetime="2025-06-06T13:27:15.000Z" itemprop="datePublished">2025-06-06</time>
-</a>   
+      <a href="/2025/05/06/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%EF%BC%9A%E5%9F%BA%E4%BA%8E%E6%97%B6%E9%97%B4%E8%B6%8B%E5%8A%BF%E9%A2%84%E6%B5%8B%E7%9A%84%E5%81%87%E6%96%B0%E9%97%BB%E6%A3%80%E6%B5%8B%E6%B3%9B%E5%8C%96%E6%A1%86%E6%9E%B6/" class="article-date">
+  <time datetime="2025-05-06T13:27:15.000Z" itemprop="datePublished">2025-05-06</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%AE%BA%E6%96%87/">论文</a> / <a class="article-category-link" href="/categories/%E8%AE%BA%E6%96%87/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB/">论文精读</a>
+  </div>
+  
 <div class="word_count">
     <span class="post-time">
         <span class="post-meta-item-icon">
@@ -110,10 +114,10 @@
 <strong>代码开源</strong>：<a target="_blank" rel="noopener" href="https://github.com/ICTMCG/FTT-ACL23">https://github.com/ICTMCG/FTT-ACL23</a></p>
 <h2 id="一-引言：时间偏移问题的本质">一、引言：时间偏移问题的本质</h2>
 <p>假新闻检测模型在实际部署中面临严峻挑战：当使用历史数据训练模型并应用于未来数据时，由于新闻话题热度、语言表达模式的动态演变，模型性能往往显著下降。这种被称为&quot;时间偏移&quot;（Temporal Shift）的现象源于新闻数据分布随时间变化的特性。现有研究证实，在时间划分的数据集上，模型F1值平均下降8%-12%。本文提出的FTT框架通过建模新闻主题的时间分布规律，预测未来时段的话题热度，并据此调整训练策略，从而提升模型的时间泛化能力。</p>
-<img src="/2025/06/06/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%EF%BC%9A%E5%9F%BA%E4%BA%8E%E6%97%B6%E9%97%B4%E8%B6%8B%E5%8A%BF%E9%A2%84%E6%B5%8B%E7%9A%84%E5%81%87%E6%96%B0%E9%97%BB%E6%A3%80%E6%B5%8B%E6%B3%9B%E5%8C%96%E6%A1%86%E6%9E%B6/F1.png" class="" title="图1：三类典型主题的时间分布模式（下降&#x2F;周期&#x2F;平稳）">
+<img src="/2025/05/06/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%EF%BC%9A%E5%9F%BA%E4%BA%8E%E6%97%B6%E9%97%B4%E8%B6%8B%E5%8A%BF%E9%A2%84%E6%B5%8B%E7%9A%84%E5%81%87%E6%96%B0%E9%97%BB%E6%A3%80%E6%B5%8B%E6%B3%9B%E5%8C%96%E6%A1%86%E6%9E%B6/F1.png" class="" title="图1：三类典型主题的时间分布模式（下降&#x2F;周期&#x2F;平稳）">
 <span id="more"></span>
 <h2 id="二-方法论框架的核心设计">二、方法论框架的核心设计</h2>
-<img src="/2025/06/06/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%EF%BC%9A%E5%9F%BA%E4%BA%8E%E6%97%B6%E9%97%B4%E8%B6%8B%E5%8A%BF%E9%A2%84%E6%B5%8B%E7%9A%84%E5%81%87%E6%96%B0%E9%97%BB%E6%A3%80%E6%B5%8B%E6%B3%9B%E5%8C%96%E6%A1%86%E6%9E%B6/F2.png" class="" title="图2：FTT框架五步处理流程">
+<img src="/2025/05/06/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%EF%BC%9A%E5%9F%BA%E4%BA%8E%E6%97%B6%E9%97%B4%E8%B6%8B%E5%8A%BF%E9%A2%84%E6%B5%8B%E7%9A%84%E5%81%87%E6%96%B0%E9%97%BB%E6%A3%80%E6%B5%8B%E6%B3%9B%E5%8C%96%E6%A1%86%E6%9E%B6/F2.png" class="" title="图2：FTT框架五步处理流程">
 <p>FTT框架包含紧密衔接的五个处理阶段。首先通过SentenceBERT将新闻文本编码为768维语义向量，并采用增量聚类算法动态构建主题簇。该算法依据余弦相似度阈值（0.5-0.65）自动判定样本归属，避免预设簇数量的限制，有效适应新闻话题的涌现与消亡特性。</p>
 <p>在主题划分基础上，框架对每个主题的季度频率序列进行双趋势建模。总体趋势通过分段线性函数：</p>
 <p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>g</mi><mi>i</mi></msub><mo stretchy="false">(</mo><msub><mi>f</mi><mrow><mi>i</mi><mo separator="true">,</mo><mi>q</mi></mrow></msub><mo stretchy="false">)</mo><mo>=</mo><mo stretchy="false">(</mo><mi>k</mi><mo>+</mo><mi mathvariant="bold">a</mi><mo stretchy="false">(</mo><mi>q</mi><msup><mo stretchy="false">)</mo><mi>T</mi></msup><mi>δ</mi><mo stretchy="false">)</mo><msub><mi>f</mi><mrow><mi>i</mi><mo separator="true">,</mo><mi>q</mi></mrow></msub><mo>+</mo><mo stretchy="false">(</mo><mi>m</mi><mo>+</mo><mi mathvariant="bold">a</mi><mo stretchy="false">(</mo><mi>q</mi><msup><mo stretchy="false">)</mo><mi>T</mi></msup><mi>γ</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">g_i(f_{i,q}) = (k + \mathbf{a}(q)^T\delta) f_{i,q} + (m + \mathbf{a}(q)^T\gamma)
@@ -131,7 +135,7 @@
 <p>使梯度更新过程更聚焦于未来高热度主题。这种设计可无缝集成至BERT等主流架构，仅需修改损失函数即可实现工业部署。</p>
 <h2 id="三-实验验证与效果分析">三、实验验证与效果分析</h2>
 <p>在2016-2020年中文微博数据集上的测试表明，FTT框架显著提升了时间泛化性能。在2020年四个季度的滚动测试中，模型综合指标macF1达到87.54%，较基线提升1.24个百分点。值得注意的是，假新闻检测（F1ᶠᵃᵏᵉ）提升幅度达1.36%，这印证了虚假信息对话题时效性更为敏感的特性。深入分析主题分布发现，框架对现有主题的检测macF1提升2.33%，同时新主题的识别能力也增强1.18%。归因实验显示，权重机制成功降低了衰退主题（如2020年Q1儿童拐卖话题权重降至0.4）的干扰，同时强化上升主题（如Q4科技话题权重升至1.8）的学习效率。</p>
-<img src="/2025/06/06/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%EF%BC%9A%E5%9F%BA%E4%BA%8E%E6%97%B6%E9%97%B4%E8%B6%8B%E5%8A%BF%E9%A2%84%E6%B5%8B%E7%9A%84%E5%81%87%E6%96%B0%E9%97%BB%E6%A3%80%E6%B5%8B%E6%B3%9B%E5%8C%96%E6%A1%86%E6%9E%B6/F3.png" class="" title="图3：预测频率与实际频率对比">
+<img src="/2025/05/06/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%EF%BC%9A%E5%9F%BA%E4%BA%8E%E6%97%B6%E9%97%B4%E8%B6%8B%E5%8A%BF%E9%A2%84%E6%B5%8B%E7%9A%84%E5%81%87%E6%96%B0%E9%97%BB%E6%A3%80%E6%B5%8B%E6%B3%9B%E5%8C%96%E6%A1%86%E6%9E%B6/F3.png" class="" title="图3：预测频率与实际频率对比">
 <h2 id="四-贡献意义与未来方向">四、贡献意义与未来方向</h2>
 <p>FTT框架的核心创新在于首次将主题级时间分布预测引入假新闻检测领域，建立了时间趋势预测与模型泛化的直接关联。其提出的动态加权机制具有良好可扩展性，可兼容各类神经网络架构。开源实现为工业场景应用提供实用方案。当前框架仍存在三方面局限：无法预测全新主题的涌现、建模维度限于频率序列而未融合语义演化特征、实验验证仅覆盖中文单模态数据。未来研究需探索跨语言多模态数据的时序泛化机制，并尝试结合事件语义演化等深层特征。该框架的范式可延伸至推荐系统、舆情监测等动态数据场景，为时间敏感型AI任务提供新思路。</p>
  
@@ -204,21 +208,32 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://xxxcoolestfish.github.io/2025/06/06/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%EF%BC%9A%E5%9F%BA%E4%BA%8E%E6%97%B6%E9%97%B4%E8%B6%8B%E5%8A%BF%E9%A2%84%E6%B5%8B%E7%9A%84%E5%81%87%E6%96%B0%E9%97%BB%E6%A3%80%E6%B5%8B%E6%B3%9B%E5%8C%96%E6%A1%86%E6%9E%B6/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://xxxcoolestfish.github.io/2025/05/06/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%EF%BC%9A%E5%9F%BA%E4%BA%8E%E6%97%B6%E9%97%B4%E8%B6%8B%E5%8A%BF%E9%A2%84%E6%B5%8B%E7%9A%84%E5%81%87%E6%96%B0%E9%97%BB%E6%A3%80%E6%B5%8B%E6%B3%9B%E5%8C%96%E6%A1%86%E6%9E%B6/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/BERT/" rel="tag">BERT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/fake-news/" rel="tag">fake news</a></li></ul>
+
     </footer>
   </div>
 
    
   <nav class="article-nav">
     
-    
       <a href="/2025/05/21/2028%E5%B9%B4%E5%A5%A5%E6%9E%97%E5%8C%B9%E5%85%8B%E7%AB%9E%E8%B5%9B%E9%A2%84%E6%B5%8B/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            2028年奥林匹克竞赛预测
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2025/03/28/%E6%96%B0%E9%97%BB%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB%E9%A1%B9%E7%9B%AE%EF%BC%9A%E4%BB%8ETextCNN%E5%88%B0%E5%A4%9A%E7%B2%92%E5%BA%A6BERT%E6%A8%A1%E5%9E%8B%E7%9A%84%E6%BC%94%E8%BF%9B/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">2028年奥林匹克竞赛预测</div>
+        <div class="article-nav-title">新闻文本分类项目：从TextCNN到多粒度BERT模型的演进</div>
       </a>
     
   </nav>
@@ -296,7 +311,7 @@
 <nav class="navbar">
   
   <div class="logo">
-    <a href="/"><img src="/images/ayer-side.svg" alt="很荣幸被您认识"></a>
+    <a href="/"><img src="/images/logo.svg" alt="很荣幸被您认识"></a>
   </div>
   
   <ul class="nav nav-main">
@@ -327,10 +342,6 @@
         <i class="ri-search-line"></i>
       </a>
       
-      
-      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
-        <i class="ri-rss-line"></i>
-      </a>
       
     </li>
   </ul>
