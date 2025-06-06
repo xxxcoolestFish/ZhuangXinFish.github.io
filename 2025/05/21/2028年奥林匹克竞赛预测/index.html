@@ -84,7 +84,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">13.9k</span>
+            <span class="post-count">13.1k</span>
         </span>
     </span>
 
@@ -93,7 +93,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">52 min</span>
+            <span class="post-count">49 min</span>
         </span>
     </span>
 </div>
@@ -119,59 +119,6 @@
 <p><strong>问题二</strong>：首先，我们将“名教练效应”对代表团的影响抽象为特定措施对结果的影响。使用双重差分法（DID），我们发现了强有力的证据来验证这种效应的存在。随后，我们观察并抽象了代表团在受到“名教练效应”影响前后的特征。通过将这些团队特征与团队改进程度进行拟合，我们推导出了一个量化“名教练效应”贡献的公式。最后，我们定义了任何参赛代表团与“名教练效应”的兼容性水平，并推荐了三个最适宜利用这种效应来提高成绩的国家，以回答第二个问题。</p>
 <p><strong>问题三</strong>：我们首先详细描述了“东道主效应”的各种异常情况，包括奖牌数不合理激增、奖牌数变化不显著、重大事件抵消东道国优势以及特殊历史环境。我们也为这四种情况提供了原因。随后，我们发现“名教练效应”的持续时间因团队条件而异，并建立了确定该效应持续时间长短的标准。</p>
 <p><strong>关键词</strong>： ARIMA, 网格搜索随机森林算法, 基于参赛条件的预测模型, 东道主效应</p>
-<p><strong>目录</strong></p>
-<ol>
-<li>引言 1<br>
-1.1 背景 1<br>
-1.2 问题重述 1<br>
-1.3 问题分析 2<br>
-1.4 我们的工作 2</li>
-<li>假设与理由 2</li>
-<li>数据处理 2<br>
-3.1 数据清洗与标准化 2<br>
-3.2 将国家奥委会代码（NOC）映射为国家名称 3<br>
-3.3 数据拆分与整合 3<br>
-3.4 模糊匹配 3</li>
-<li>模型1：使用ARIMA的基于时间序列的预测模型 4<br>
-4.1 ARIMA预测模型 4<br>
-4.2 基于时间序列的预测模型 4<br>
-4.2.1 初始拟合 4<br>
-4.2.2 东道主效应 5</li>
-<li>模型2：基于条件的预测模型 7<br>
-5.1 网格搜索与随机森林预测模型 7<br>
-5.1.1 网格搜索 7<br>
-5.1.2 随机森林预测模型 8<br>
-5.2 奥运会比赛条件特征的提取 8<br>
-5.2.1 TS时间得分 8<br>
-5.2.2 NM比赛场次数 10<br>
-5.2.3 DB双方差异 10<br>
-5.2.4 年份 10<br>
-5.3 训练随机森林模型 10<br>
-5.4 2028年奥运会加权参与概率（WPP） 11<br>
-5.5 模型1与模型2的加权融合 11<br>
-5.6 2028年奥运会奖牌预测结果 12<br>
-5.7 确定各国奖牌获取对特定运动项目的依赖性 14</li>
-<li>名教练效应 15<br>
-6.1 马尔可夫链预测模型 15<br>
-6.2 通过DID模型寻找名教练效应的证据 15<br>
-6.3 量化名教练效应 17<br>
-6.4 确定哪些国家最适合引进名教练 18</li>
-<li>关于奥运会奖牌数的见解 20<br>
-7.1 东道主效应的普遍表现 20<br>
-7.1.1 东道主效应的定义与表现 20<br>
-7.1.2 异常案例分析 21<br>
-7.1.3 东道主效应的影响与未来建议 23<br>
-7.2 名教练效应的持久性 23<br>
-7.2.1 名教练效应的定义与典型案例分析 23<br>
-7.2.2 影响因素分析 24</li>
-<li>敏感性分析 24</li>
-<li>AI使用报告 26<br>
-9.1 AI使用概述 26<br>
-9.2 借助AI获取的知识 26<br>
-9.2.1 体育相关知识 26<br>
-9.2.2 数据映射与对应关系 26<br>
-9.3 绘图与计算程序的使用 26</li>
-</ol>
 <h2 id="1-引言">1 引言</h2>
 <h3 id="1-1-背景">1.1 背景</h3>
 <p>奥运会是世界顶级的体育盛会，奖牌榜备受关注。在2024年巴黎奥运会上，美国获得了奖牌总数第一名，而中国在金牌数上并列第一。各国的排名反映了他们在不同项目上体育实力的差距。一些国家实现了奖牌“零的突破”，然而仍有超过60个国家没有获得过奥运奖牌，凸显了全球体育发展的不平衡。</p>
@@ -201,7 +148,7 @@
 <p>为了建立国家奥委会（NOC）代码与国家名称的对应关系，我们查阅了在线资源以创建映射字典。该字典便于后续的数据处理和分析。</p>
 <h3 id="3-3-数据拆分与整合">3.3 数据拆分与整合</h3>
 <p>为了简化数据统计和分析，我们对提供的数据集进行了拆分和整合。这个过程产生了新的数据集，例如各国在各个运动项目的奖牌成就以及特定赛事中各国的运动员数据。重组后的数据示例如下：</p>
-<p><a href="@replace=2"></a></p>
+<img src="/2025/05/21/2028%E5%B9%B4%E5%A5%A5%E6%9E%97%E5%8C%B9%E5%85%8B%E7%AB%9E%E8%B5%9B%E9%A2%84%E6%B5%8B/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86.png" class="" title="图1：数据处理流程示意图">
 <h3 id="3-4-模糊匹配">3.4 模糊匹配</h3>
 <p>在数据集中，一些国家的名称有多个表达方式，导致难以精确匹配数据。为了解决这个问题，我们使用Python的FuzzyWuzzy库，根据summerOly_hosts.csv文件中的表达方式对国家名称进行标准化。这使我们能够对齐summerOly_medal_counts.csv文件中的相同国家名称。</p>
 <h2 id="4-模型1：使用arima的基于时间序列的预测模型">4 模型1：使用ARIMA的基于时间序列的预测模型</h2>
@@ -217,21 +164,13 @@
 <h4 id="4-2-1-初始拟合">4.2.1 初始拟合</h4>
 <p>在Python中，我们使用各国历史奖牌数据作为模型的输入。对于每个参加过奥运会的国家（排除已不存在的国家），我们使用statsmodels.tsa.arima.model.ARIMA类构建并拟合ARIMA模型。使用均方误差（MSE）评估模型的预测能力。</p>
 <p>构建模型后，我们观察到一些国家的MSE值明显偏高，表明预测值与实际值之间存在较大差异。经过进一步分析，我们发现这些国家曾举办过奥运会，并且在举办年份的偏差尤为明显，预测值常常高于实际结果。我们将这种现象称为&quot;东道主效应&quot;。</p>
+<img src="/2025/05/21/2028%E5%B9%B4%E5%A5%A5%E6%9E%97%E5%8C%B9%E5%85%8B%E7%AB%9E%E8%B5%9B%E9%A2%84%E6%B5%8B/%E4%B8%9C%E9%81%93%E4%B8%BBMES.png" class="" title="图2：东道主效应下的MSE">
 <p>东道主效应指的是一个国家在举办奥运会时，其奥运表现显著提升的现象，这导致了预测值与实际结果之间的差异。</p>
-<p><a href="@replace=1"></a><br>
-<br></p>
-<center>图3：东道主效应</center>
-<p><a href="@replace=2"></a><br>
-<br></p>
-<center>图4：东道主效应</center>
+<img src="/2025/05/21/2028%E5%B9%B4%E5%A5%A5%E6%9E%97%E5%8C%B9%E5%85%8B%E7%AB%9E%E8%B5%9B%E9%A2%84%E6%B5%8B/%E4%B8%9C%E9%81%93%E4%B8%BB%E6%95%88%E5%BA%94.png" class="" title="图3：东道主效应">
 <p>为了减轻这种效应对预测准确性的影响，我们识别了曾举办过奥运会的国家。在预测时，我们用其举办年的实际奖牌数替换为使用历史数据预测的值。这种方法成功降低了东道主效应对预测准确性的影响。</p>
-<p><a href="@replace=3"></a><br>
-<br></p>
-<center>图5：东道主效应影响下的MSE</center>
+<img src="/2025/05/21/2028%E5%B9%B4%E5%A5%A5%E6%9E%97%E5%8C%B9%E5%85%8B%E7%AB%9E%E8%B5%9B%E9%A2%84%E6%B5%8B/F5.png" class="" title="图4：东道主效应影响下的MSE">
 <h2 id="5-模型2：基于条件的预测模型">5 模型2：基于条件的预测模型</h2>
-<p><a href="@replace=4"></a><br>
-<br></p>
-<center>图6：基于条件的预测模型</center>
+<img src="/2025/05/21/2028%E5%B9%B4%E5%A5%A5%E6%9E%97%E5%8C%B9%E5%85%8B%E7%AB%9E%E8%B5%9B%E9%A2%84%E6%B5%8B/F6.png" class="" title="图5：基于条件的预测模型">
 <h3 id="5-1-网格搜索与随机森林预测模型">5.1 网格搜索与随机森林预测模型</h3>
 <h4 id="5-1-1-网格搜索">5.1.1 网格搜索</h4>
 <p>网格搜索是机器学习中调整超参数的基本技术。考虑一个机器学习模型 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">M</mi></mrow><annotation encoding="application/x-tex">\mathcal{M}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord"><span class="mord mathcal">M</span></span></span></span></span>，其具有一组超参数 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi><mo>=</mo><mrow><mo fence="true">(</mo><msub><mi>θ</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>θ</mi><mn>2</mn></msub><mo separator="true">,</mo><mo>⋯</mo><mtext> </mtext><mo separator="true">,</mo><msub><mi>θ</mi><mi>k</mi></msub><mo fence="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">\theta=\left(\theta_{1},\theta_{2},\cdots,\theta_{k}\right)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">θ</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">θ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">θ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner">⋯</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">θ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;">)</span></span></span></span></span>。令 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="script">S</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">\mathcal{S}_{i}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord"><span class="mord mathcal" style="margin-right:0.075em;">S</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 表示第 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span> 个超参数 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>θ</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">\theta_{i}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">θ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 的候选值集合。超参数空间 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">H</mi></mrow><annotation encoding="application/x-tex">\mathcal{H}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord"><span class="mord mathcal" style="margin-right:0.00965em;">H</span></span></span></span></span> 是所有这些集合的笛卡尔积，即 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">H</mi><mo>=</mo><msub><mi mathvariant="script">S</mi><mn>1</mn></msub><mo>×</mo><msub><mi mathvariant="script">S</mi><mn>2</mn></msub><mo>×</mo><mo>⋯</mo><mo>×</mo><msub><mi mathvariant="script">S</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">\mathcal{H}=\mathcal{S}_{1}\times\mathcal{S}_{2}\times\cdots\times\mathcal{S}_{k}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord"><span class="mord mathcal" style="margin-right:0.00965em;">H</span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord"><span class="mord mathcal" style="margin-right:0.075em;">S</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord"><span class="mord mathcal" style="margin-right:0.075em;">S</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="minner">⋯</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord"><span class="mord mathcal" style="margin-right:0.075em;">S</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>。</p>
@@ -313,9 +252,8 @@ M834 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">�
 <h3 id="5-3-训练随机森林模型">5.3 训练随机森林模型</h3>
 <p>对于每个国家队，我们使用上述所有特征参数作为输入，团队的奖牌获取情况（即在相应奥运年份获得的金、银、铜牌数量）作为输出，训练了一个对应的随机森林预测模型。对于参赛次数非常少的团队，为了确保模型预测的准确性，我们假设他们在2028年的表现水平将保持不变。</p>
 <p>各国的平均均方误差（MSE）值如下图所示。</p>
-<p><a href="@replace=5"></a><br>
-<br></p>
-<center>图7：条件预测MSE频率分布直方图</center>
+<blockquote></blockquote>
+<img src="/2025/05/21/2028%E5%B9%B4%E5%A5%A5%E6%9E%97%E5%8C%B9%E5%85%8B%E7%AB%9E%E8%B5%9B%E9%A2%84%E6%B5%8B/F7.png" class="" title="图6：条件预测MSE频率分布直方图">
 <h3 id="5-4-2028年奥运会加权参与概率-wpp">5.4 2028年奥运会加权参与概率（WPP）</h3>
 <p>在模型训练过程中，我们观察到一些团队虽然有足够的历史参赛次数，但近年来的参赛次数相对较少。为了减少这些&quot;低参与度团队&quot;对2028年奥运会奖牌预测的影响，我们计算了每个团队参加2028年奥运会的加权参与概率（WPP）。具体公式如下：</p>
 <p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>W</mi><mi>P</mi><mi>P</mi><mo>=</mo><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mn>5</mn></munderover><msub><mi>p</mi><mi>i</mi></msub><mo>⋅</mo><msub><mi>b</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">W P P=\sum_{i=1}^{5} p_{i} \cdot b_{i}
@@ -536,9 +474,7 @@ M834 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">�
 </tr>
 </tbody>
 </table>
-<p><a href="@replace=6"></a><br>
-<br></p>
-<center>图8：世界各国获奖情况热力图</center>
+<img src="/2025/05/21/2028%E5%B9%B4%E5%A5%A5%E6%9E%97%E5%8C%B9%E5%85%8B%E7%AB%9E%E8%B5%9B%E9%A2%84%E6%B5%8B/F8.png" class="" title="图7：世界各国获奖情况热力图">
 <p>与2024年奥运会相比，各国排名变化不大，但奖牌价值（奖牌质量）发生了显著变化。我们定义的奖牌价值公式如下：</p>
 <p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>奖牌价值</mtext><mo>=</mo><mn>2</mn><msup><mn>0</mn><mn>2</mn></msup><mo>⋅</mo><mi>G</mi><mo>+</mo><mn>20</mn><mo>⋅</mo><mi>S</mi><mo>+</mo><mn>1</mn><mo>⋅</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">\text{奖牌价值} = 20^{2} \cdot G + 20 \cdot S + 1 \cdot B
 </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord text"><span class="mord cjk_fallback">奖牌价值</span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8641079999999999em;vertical-align:0em;"></span><span class="mord">2</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641079999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">G</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span></span></span></span></span></p>
@@ -566,9 +502,7 @@ M834 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">�
 </tr>
 </tbody>
 </table>
-<p><a href="@replace=7"></a><br>
-<br></p>
-<center>图9：2028年前20名国家的进步与退步</center>
+<img src="/2025/05/21/2028%E5%B9%B4%E5%A5%A5%E6%9E%97%E5%8C%B9%E5%85%8B%E7%AB%9E%E8%B5%9B%E9%A2%84%E6%B5%8B/F9.png" class="" title="图8：2028年前20名国家的进步与退步">
 <h3 id="5-7-确定各国奖牌获取对特定运动项目的依赖性">5.7 确定各国奖牌获取对特定运动项目的依赖性</h3>
 <p>如果一个国家的某个特定团队具有出色的历史获奖频率，那么该团队所代表的运动项目可以被视为该国的优势项目。在这种情况下，可以说该国的奖牌获取依赖于该运动项目。</p>
 <p>从这个角度出发，我们分析了各国所有参赛团队的历史获奖频率。通过识别每个国家获得金、银、铜牌频率最高的团队，我们确定了每个国家对特定运动项目的依赖程度。由于数据量庞大，下表仅展示我们预测的2028年奥运会前十名国家所依赖的运动项目。</p>
@@ -660,11 +594,9 @@ M834 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">�
 <h3 id="6-2-通过did模型寻找名教练效应的证据">6.2 通过DID模型寻找名教练效应的证据</h3>
 <p>为了寻找名教练效应的证据，我们将优秀教练视为一种政策，将他们所指导团队的进步视为政策效应带来的改善。我们使用双重差分（DID）模型来搜寻证据。我们使用马尔可夫链模型预测如果没有名教练指导，团队将获得的奖牌数。然后将其与实际获奖情况进行比较。结果显示两者之间存在显著差异，因此可以说存在名教练效应。</p>
 <p>我们基于奖牌的价值和数量将奖牌成就量化为因变量，并构建了&quot;无名教练&quot;情景下的奖牌变化。通过将预测结果与实际数据比较，我们得到了以下3D图表：</p>
-<br>
-<center>图10：Béla Károlyi教练的名教练效应比较</center>
+<img src="/2025/05/21/2028%E5%B9%B4%E5%A5%A5%E6%9E%97%E5%8C%B9%E5%85%8B%E7%AB%9E%E8%B5%9B%E9%A2%84%E6%B5%8B/F10.png" class="" title="图9：Béla Károlyi教练的名教练效应比较">
 <p>上图展示了罗马尼亚女子体操队和美国体操队预测与实际奖牌成就的3D瀑布图比较。</p>
-<br>
-<center>图11：郎平教练的名教练效应比较</center>
+<img src="/2025/05/21/2028%E5%B9%B4%E5%A5%A5%E6%9E%97%E5%8C%B9%E5%85%8B%E7%AB%9E%E8%B5%9B%E9%A2%84%E6%B5%8B/F11.png" class="" title="图10：郎平教练的名教练效应比较">
 <p>上图展示了美国女子排球队和中国女子排球队预测与实际奖牌成就的3D瀑布图比较（郎平曾两次执教中国女排，产生了两个预测模型，在图表中表示为两组实际-预测值对）。</p>
 <p>基于这些图表，可以明显看出预测模型与实际数据之间存在显著差异。所有四张图表都清晰展示了名教练到来前后团队表现的变化，为名教练效应确实存在提供了有力证据。</p>
 <p>然而，通过观察上述3D图表，我们可以注意到Béla Károlyi对罗马尼亚和美国体操队的影响是深远且持久的——两支队伍都在金牌和银牌上实现了从零到一的突破，从那时起他们的奖牌数量显著增加。郎平带领美国队在16年空白期后获得银牌，重返领奖台…但这种模式似乎不适用于中国队：在郎平两次执教后的第一届奥运会上，中国队取得了不同的成绩（一次银牌一次金牌），而在随后的第二届和第三届奥运会上，他们并未表现出&quot;持续实力&quot;，表现波动显著。</p>
@@ -697,10 +629,9 @@ M834 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">�
 <p>根据我们的量化模型，美国女子排球队和罗马尼亚体操队的长期&quot;挫折期&quot;使名教练效应能够持续并产生深远影响。相比之下，中国女子排球队由于挫折期较短，郎平的影响表现出强大的短期效果但未能产生长期稳定的结果。这些发现与我们的模型一致。</p>
 <p>基于上述分析，我们可以识别具有显著&quot;团队潜力&quot;的国家和项目进行预测。通过计算&quot;名教练潜在影响力&quot;，我们发现引进名教练可能对某些国家和项目的未来奥运表现产生重大影响。</p>
 <p>因此，我们决定在众多国家中搜寻具有高&quot;团队潜力&quot;的代表队。经过程序化筛选，以下国家符合标准。</p>
-<br>
-<center>图12：拥有足够潜力团队的国家</center>
-<br>
-<center>图13：团队潜力在世界地图上的展示</center>
+<img src="/2025/05/21/2028%E5%B9%B4%E5%A5%A5%E6%9E%97%E5%8C%B9%E5%85%8B%E7%AB%9E%E8%B5%9B%E9%A2%84%E6%B5%8B/F12.png" class="" title="图11：拥有足够潜力团队的国家">
+<img src="/2025/05/21/2028%E5%B9%B4%E5%A5%A5%E6%9E%97%E5%8C%B9%E5%85%8B%E7%AB%9E%E8%B5%9B%E9%A2%84%E6%B5%8B/F13.png" class="" title="图12：团队潜力在世界地图上的展示">
+<p>图12：拥有足够潜力团队的国家</p>
 <p>例如，根据计算，韩国的手球、加拿大的铁人三项和斯洛文尼亚的田径项目都有过往奖牌成就但近期无奖牌记录。他们的&quot;团队潜力值&quot;名列前茅。我们可以选择这些国家，并向其相应项目&quot;引进&quot;名教练，然后观察其奖牌表现的变化。</p>
 <p>将这些值代入前面推导的模型，我们得到如果名教练指导这些团队可能实现的&quot;团队进步&quot;百分比：分别为83.22%、79.73%和71.22%。</p>
 <p>使用我们先前分析中这些国家2028年的预测奖牌结果，我们可以估算其国家实力如下：</p>
@@ -765,22 +696,18 @@ M834 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">�
 </ol>
 <p>为量化东道主效应，我们在第一个问题中构建了&quot;非东道主&quot;模型。通过预测一个国家非东道主时的奖牌表现并与实际结果比较，揭示了东道主效应的具体表现。该模型不仅帮助我们识别了东道主效应的普遍性，还为深入分析其在不同国家和时期的差异提供了基础。</p>
 <p>预测结果符合我们的预期。通过比较预测值与实际值，我们可以确认东道主效应的存在。例如，瑞典在1912年斯德哥尔摩奥运会上创纪录地获得奖牌，比利时在1920年安特卫普奥运会上表现也显著提升。特别是中国在2008年北京奥运会上以51枚金牌位居奖牌榜首位，远超其历史平均水平。这些案例表明，东道主效应通常对奥运表现产生显著的积极影响。</p>
-<br>
-<center>图14：瑞典、比利时、中国的东道主效应</center>
+<img src="/2025/05/21/2028%E5%B9%B4%E5%A5%A5%E6%9E%97%E5%8C%B9%E5%85%8B%E7%AB%9E%E8%B5%9B%E9%A2%84%E6%B5%8B/F14.png" class="" title="图13：瑞典、比利时、中国的东道主效应">
 <h4 id="7-1-2-异常案例分析">7.1.2 异常案例分析</h4>
 <p>尽管大多数国家表现出东道主效应，但仍存在一些异常案例，提供了更深入的分析视角。</p>
 <p><strong>奖牌数不合理激增</strong><br>
 例如，法国在1900年巴黎奥运会和希腊在1896年雅典奥运会分别获得101枚和46枚奖牌，远超其历史平均水平。这种现象可能归因于参赛国数量有限、竞技水平差异显著以及当时规则不完善等因素。此外，早期奥运会的项目设置和评判标准与现代奥运会有显著差异，也可能导致奖牌数异常增加。然而，在当前奥运背景下，此类异常案例已不再具有参考价值。</p>
-<br>
-<center>图15：法国的异常奖牌激增</center>
+<img src="/2025/05/21/2028%E5%B9%B4%E5%A5%A5%E6%9E%97%E5%8C%B9%E5%85%8B%E7%AB%9E%E8%B5%9B%E9%A2%84%E6%B5%8B/F15.png" class="" title="图14：法国的异常奖牌激增">
 <p><strong>奖牌数变化不显著</strong><br>
 美国在1936年柏林奥运会和1996年亚特兰大奥运会的表现与预测值偏差很小。同样，墨西哥在1968年墨西哥城奥运会前后的表现变化微乎其微。尽管美国和墨西哥的国家实力差异巨大，但这种现象表明他们的奖牌数可能已达到其国家能力允许的&quot;瓶颈&quot;，意味着其体育实力已趋于稳定。即使有东道主效应，也难以进一步提升其奖牌表现。这一发现表明，东道主效应并不总能显著提升奖牌数，特别是在体育实力已达到较高水平的国家。</p>
-<br>
-<center>图16：美国1936-1996年未显示显著增长</center>
+<img src="/2025/05/21/2028%E5%B9%B4%E5%A5%A5%E6%9E%97%E5%8C%B9%E5%85%8B%E7%AB%9E%E8%B5%9B%E9%A2%84%E6%B5%8B/F16.png" class="" title="图15：美国1936-1996年未显示显著增长">
 <p><strong>重大事件抵消东道国优势</strong><br>
 2020年东京奥运会（2021年举办）的实际奖牌表现与预测值高度一致，没有出现东道国奖牌数的&quot;异常峰值&quot;。这种&quot;正常&quot;实际上是&quot;异常&quot;。据推测，COVID-19疫情抑制了东道国的增益效应，从而&quot;抵消&quot;了优势。这表明战争、疫情等重大事件可能抵消东道主效应，应在未来预测模型中作为重要因素考虑。</p>
-<br>
-<center>图17：日本在2020年增长不显著</center>
+<img src="/2025/05/21/2028%E5%B9%B4%E5%A5%A5%E6%9E%97%E5%8C%B9%E5%85%8B%E7%AB%9E%E8%B5%9B%E9%A2%84%E6%B5%8B/F17.png" class="" title="图16：日本在2020年增长不显著">
 <p><strong>特殊历史环境</strong><br>
 例如，日本的军国主义政府曾计划举办1940年东京奥运会，但由于第二次世界大战，该届奥运会被取消，导致该国历史奖牌数据出现空白。这种独特的历史背景需要在分析中单独考虑，以避免对东道主效应的误判。</p>
 <h3 id="7-1-3-东道主效应的影响与未来建议">7.1.3 东道主效应的影响与未来建议</h3>
